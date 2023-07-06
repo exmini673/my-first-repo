@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
         sudo apt-get update -y
         sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
         sudo usermod -a -G docker vagrant
+        docker login -u exmini673 --password-stdin < /vagrant/env/docker_tocken
         docker run -it -d -p 8080:80 --name web-server httpd
         docker cp /vagrant/htdocs web-server:/usr/local/apache2/htdocs
       SCRIPT
